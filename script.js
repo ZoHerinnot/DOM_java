@@ -1,110 +1,113 @@
-//Fonctionnalité 1  et 1-bis 
 
-// lorsque l'utilisateur va cliquer sur le footer, tu vas afficher en console 
-//"clic numéro x" avec x qui commence à 1 et s'incrémente de +1 à chaque clic.
-var  footer = document.getElementsByTagName("footer")[0];
-var count = 0;
-footer.addEventListener("click", function1);
-function function1 () {
-    count += 1
-    console.log("clique numéro " + count);
+var clickFooter = document.querySelector("footer");
+
+clickFooter.addEventListener("click", onClickFooter);
+x = 0;
+function onClickFooter() {
+	console.log(`clique ${x+=1}`);
 };
 
-// Fonctionnalité 2
-
-col = document.querySelectorAll("div.collapse ");
-
+// humberger
+var col = document.querySelectorAll("div.collapse ");
 var menu = document.getElementById("navbarHeader");
 var btn = document.getElementsByClassName("navbar-toggler")[0];
 var statu= true;
 function hamburger() {
-    if (statu == true ){    
-        menu.classList.remove("collapse","bg-dark"); 
-        statu = false;        
-    } else{
-        menu.classList.add("collapse","bg-dark");
-        statu = true;
-    }
+   if (statu == true ){
+       menu.classList.remove("collapse");
+       statu = false;
+   } else{
+       menu.classList.add("collapse");
+       statu = true;
+   }
 }
 btn.addEventListener("click", hamburger);
 
-// Fonctionnalité 3
 
-var text = document.getElementsByClassName("btn btn-sm btn-outline-secondary")[0];
-var cardtext = document.getElementsByClassName("card-text")[0];
+// fonction 3
 
-function textcolor() {
-    cardtext.style.color = "red";
-};
-text.addEventListener("click",textcolor);
+var carFonction = document.querySelectorAll("div.card-body")[0];
+console.log(carFonction);
+var boutton = document.getElementsByClassName("btn btn-sm btn-outline-secondary")[0];
+console.log(boutton)
 
-// Fonctionnalité 4
-
-var text1 = document.getElementsByClassName("btn btn-sm btn-outline-secondary")[1];
-var cardtext1 = document.getElementsByClassName("card-text")[1]; 
-var statu = true;
-function textcolor1(e) {
-    if (statu == true) {   
-    cardtext1.style.color = "green";  
-    statu = false;  
-    } else{
-        cardtext1.style.color = "black";  
-        statu = true;
-    };
-    
-}
-text1.addEventListener("click", textcolor1);
-
-// Fonctionnalité 5
-
-var bootbtn = document.getElementsByClassName("navbar")[0];
-var link = document.querySelectorAll("link")[0];
-var statu= true;
-function ondblclick(){
-    if(statu == true){
-    link.setAttribute('href', '#');
-    statu = false;
-    }else{
-        link.setAttribute('href', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
-        statu = true;
-    }
-}
-bootbtn.addEventListener("dblclick",ondblclick);
-
-// Fonctionnalité 6
-var tab = document.getElementsByClassName("card-text");
-var textElt = []
-for (let i = 0; i < tab.length; i++) {
-    textElt.push(tab[i].textContent)
-    
+function colorChange() {
+	carFonction.style.color = "red"
 }
 
-var view = document.getElementsByClassName("btn btn-sm btn-success");
+boutton.addEventListener("click", colorChange)
 
-for(let i= 0 ; i < view.length; i++){
+// fonction 4
 
-var viewElt = document.getElementsByClassName("btn btn-sm btn-success")[i];
+var carFonction1 = document.querySelectorAll("div.card-body")[1];
+var boutton1 = document.getElementsByClassName("btn btn-sm btn-outline-secondary")[1];
+
+var color = true;
+function colorChange1() {
+	if (color == true) {
+	carFonction1.style.color = "green";
+		color = false;
+	}
+	else {
+	carFonction1.style.color = "";
+	color = true;
+	}
+}
+boutton1.addEventListener("click", colorChange1);
 
 
+//fonction 5
+var head = document.querySelector("header");
+console.log(head)
 
-        function hidden() {
-
-            var txt = document.getElementsByClassName("card-text")[i];
-            var picture = document.getElementsByClassName("card-img-top")[i];
-            
-            if (statu == true){
-            txt.innerHTML="";
-            picture.style.width = "20%";
-            statu = false;
-            }else{
-                txt.innerHTML = textElt[i];
-                picture.style.width = "";
-                statu = true;
-            }
-        }
-
-    viewElt.addEventListener("mouseover", hidden);
+var stat = true;
+function remove() {
+	if (stat == true) {
+	document.querySelector("link").disabled = true;
+	stat = false;
+	} else {
+		document.querySelector("link").disabled = false;
+		stat = true;
+	}
 }
 
-// Fonctionnalité 7
+head.addEventListener("dblclick", remove)
 
+// fonction 6
+let view = document.getElementsByClassName("btn btn-sm btn-success")
+for (let i = 0; i < view.length; i++) {
+
+let card = document.querySelectorAll("div.col-md-4")[i];
+let text = document.querySelectorAll("p.card-text")[i];
+let text1 = document.querySelectorAll("small.text-muted")[i];
+
+let stat = true
+function mouse() {
+	if (stat == true) {
+	card.style.width = "20%";
+	text.style.display = 'none';
+	text1.style.display = 'none';
+	stat = false;
+	} else {
+		card.style.width = "";
+		text.style.display = 'block';
+		text1.style.display = 'block';
+		stat = true;
+	}
+}
+
+view[i].addEventListener("mousemove", mouse)
+
+}
+
+//fonction 7
+var btn = document.getElementsByClassName("btn btn-secondary my-2")[0];
+console.log(btn)
+var up = document.getElementsByClassName("row")[1]
+console.log(up)
+
+function upCase() {
+	up.insertBefore(up.lastChild, up.firstChild);
+} 
+
+btn.addEventListener("click", upCase)
